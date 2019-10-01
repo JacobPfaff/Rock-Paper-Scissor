@@ -43,7 +43,7 @@ while True:
 	# print the score
 	printScore()
 	#prompt for player choice
-	pChoice = input("Enter 'r' for rock, 'p' for paper, 's' for scissors or 'q' to quit:")
+	pChoice = input("Enter 'r' for rock, 'paper' for paper, 's' for scissors or 'q' to quit:")
 	#get the computer choice (random)
 	cChoice = random.choice(computerChoices)
 	#compare
@@ -68,16 +68,39 @@ while True:
 			print("Rock beats scissors")
 			pScore = pScore + 1
 	#compare pChoice to "p"
-	elif pChoice == "p": #player picks paper
+	elif pChoice == "paper": #player picks paper
 		print("You picked paper")
-		print("Paper beats scissors")
-		pScore = pScore + 1
+		if cChoice == "s":
+			print("Computer picked scissors")
+			print("Scissors beats paper")
+			cScore = cScore + 1
+		elif cChoice == "paper":
+			print("Computer picked paper")
+			print("This is a tie")
+			ties = ties + 1
+		else:
+			print("Computer picked rock")
+			print("Paper beats rock")
+			pScore = pScore + 1
+
 	elif pChoice == "s":
 		print("You picked scissors")
-		if cChoice == "p"
-		print("Computer picked paper ")
-		print("Scissors beats paper")
-		pScore = pScore + 1
+		if cChoice =="rock":
+			print("Computer picked rock")
+			print("Rock beats scissors")
+			cScore = cScore + 1
+		elif cChoice == "paper":
+			print("Computer picked paper")
+			print("Scissors beats paper")
+			pScore = pScore + 1  
+		else: # scissors is left
+			print("Computer picked scissors")
+			print("This is a tie")
+			ties = ties + 1
+
+
+
+
 	else:
 		print("You picked something not on the list")
 
